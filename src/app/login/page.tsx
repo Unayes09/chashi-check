@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -32,7 +33,6 @@ const CROPS = [
 function useBanglaRecognizer() {
   const [active, setActive] = useState(false);
   function recognizeOnce(onResult: (text: string) => void) {
-    // @ts-ignore
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) {
       alert("আপনার ব্রাউজারে ভয়েস সাপোর্ট নেই।");

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -307,7 +308,7 @@ export default function CropDetailPage({ params }: { params: { id: string } }) {
             <div className="flex-1">
               <h3 className="font-semibold text-blue-800 mb-1">ফসলের ছবি দিয়ে সমস্যা খুঁজুন</h3>
               <p className="text-blue-700 text-sm">
-                উপরের "ফসলের ছবি" বাটনে ক্লিক করে আপনার ফসলের ছবি আপলোড করুন। 
+                উপরের &quot;ফসলের ছবি&quot; বাটনে ক্লিক করে আপনার ফসলের ছবি আপলোড করুন। 
                 AI আপনার ফসলের রোগ, পোকা বা অন্যান্য সমস্যা শনাক্ত করে উপযুক্ত পরামর্শ দেবে।
               </p>
             </div>

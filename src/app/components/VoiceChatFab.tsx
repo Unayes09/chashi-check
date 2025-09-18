@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -14,6 +15,8 @@ type Phase = "idle" | "listening" | "thinking" | "speaking";
 
 export default function VoiceChatFab() {
   const [phase, setPhase] = useState<Phase>("idle");
+  const [active, setActive] = useState(false);
+  
   const recogRef = useRef<any>(null);
 
   useEffect(() => {
@@ -24,7 +27,10 @@ export default function VoiceChatFab() {
     r.interimResults = false;
     r.maxAlternatives = 1;
 
-    r.onstart = () => setPhase("listening");
+    r.onstart = () => {
+      setPhase("listening");
+      setActive(true);
+    };
     r.onresult = async (e: any) => {
       const said = e?.results?.[0]?.[0]?.transcript?.trim();
       if (!said) {
@@ -40,27 +46,32 @@ export default function VoiceChatFab() {
         await speak("দুঃখিত, সার্ভার থেকে উত্তর আনা যায়নি।");
       } finally {
         setPhase("idle");
+        setActive(false);
       }
     };
-    r.onerror = () => setPhase("idle");
+    r.onerror = () => {
+      setPhase("idle");
+      setActive(false);
+    };
     r.onend = () => {
       if (phase === "listening") setPhase("idle");
+      setActive(false);
     };
 
     recogRef.current = r;
   }, [phase]);
 
   function toggle() {
-    const r = recogRef.current;
-    if (!r) {
+    if (!recogRef.current) {
       alert("আপনার ব্রাউজারে ভয়েস সাপোর্ট নেই।");
       return;
     }
-    if (phase === "listening") {
-      r.stop();
-      setPhase("idle");
+    if (active) {
+      recogRef.current.stop();
+      setActive(false);
     } else {
-      r.start();
+      setActive(true);
+      recogRef.current.start();
     }
   }
 
@@ -102,6 +113,7 @@ export default function VoiceChatFab() {
       });
     } finally {
       setPhase("idle");
+      setActive(false);
     }
   }
 

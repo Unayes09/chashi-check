@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/app/utils/api.ts
 const BASE =
   process.env.API_ENDPOINT ||
