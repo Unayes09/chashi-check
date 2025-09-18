@@ -1,0 +1,30 @@
+.emergency-page {
+  font-family: "Roboto", sans-serif;
+  background-color: #f9fafb;
+}
+
+header {
+  border-bottom: 4px solid #dc2626;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+h1, h2, h3 {
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
