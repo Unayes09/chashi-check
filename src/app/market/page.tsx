@@ -1,5 +1,6 @@
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import { convertToBengaliNumerals } from "@/app/utils/convertToBengali";
 import { getMarketSnapshot, type MarketCategory } from "@/app/utils/api";
 
 export const metadata = {
@@ -48,7 +49,7 @@ function CategorySection({ cat }: { cat: MarketCategory }) {
               <div className="text-xs text-gray-500">/ {it.unit}</div>
             </div>
             <div className="text-right">
-              <div className="font-semibold">৳{it.price}</div>
+              <div className="font-semibold">৳{convertToBengaliNumerals(it.price)}</div>
               {typeof it.changePct === "number" && (
                 <div className={`text-xs ${it.changePct > 0 ? "text-red-600" : it.changePct < 0 ? "text-emerald-600" : "text-gray-500"}`}>
                   {it.changePct === 0 ? "—" : `${it.changePct > 0 ? "↑" : "↓"} ${Math.abs(it.changePct)}%`}

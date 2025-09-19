@@ -2,22 +2,23 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { convertToBengaliNumerals } from "@/app/utils/convertToBengali";
 
 type Weather = {
   date: string;
   location: string;
   summary: string;
-  tempC: number;
-  rainChancePct: number;
+  tempC: string;
+  rainChancePct: string;
 };
 
 // ডামি আবহাওয়া ডেটা
 const dummyWeather: Weather = {
-  date: "২০২৫-০৯-১৮",
-  location: "ঢাকা, বাংলাদেশ",
+  date: "২০২৫-০৯-১৯",
+  location: "সিলেট, বাংলাদেশ",
   summary: "আংশিক মেঘলা, হালকা বৃষ্টির সম্ভাবনা",
-  tempC: 32,
-  rainChancePct: 65
+  tempC: "৩২",
+  rainChancePct: "৬৫"
 };
 
 export default function Hero() {
@@ -50,7 +51,7 @@ export default function Hero() {
             চাষীবন্ধু — সহজ কথায় কৃষি সহায়ক
           </h1>
           <p className="text-gray-700">
-            আবহাওয়া, বাজারদর, রোগ শনাক্তকরণ ও শেখার অডিও—সব এক জায়গায়।
+            আবহাওয়া, বাজারদর, রোগ শনাক্তকরণ ও শেখা—সব এক জায়গায়।
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="#ask" className="rounded-full px-5 py-3 text-sm font-medium bg-green-600 text-white hover:bg-green-700">
@@ -93,12 +94,12 @@ export default function Hero() {
 // ডামি বাজার ডেটা
 const dummyData = {
   items: [
-    { name: "পটল", unit: "কেজি", price: 48 },
-    { name: "বেগুন", unit: "কেজি", price: 60 },
-    { name: "চাল (মাঝারি)", unit: "কেজি", price: 56 },
-    { name: "ব্রয়লার মুরগি", unit: "কেজি", price: 180 },
-    { name: "টমেটো", unit: "কেজি", price: 85 },
-    { name: "কাঁচা মরিচ", unit: "কেজি", price: 120 }
+    { name: "পটল", unit: "কেজি", price: convertToBengaliNumerals(48) },
+    { name: "বেগুন", unit: "কেজি", price: convertToBengaliNumerals(60) },
+    { name: "চাল (মাঝারি)", unit: "কেজি", price: convertToBengaliNumerals(56) },
+    { name: "ব্রয়লার মুরগি", unit: "কেজি", price: convertToBengaliNumerals(180) },
+    { name: "টমেটো", unit: "কেজি", price: convertToBengaliNumerals(85) },
+    { name: "কাঁচা মরিচ", unit: "কেজি", price: convertToBengaliNumerals(120) }
   ]
 };
 
@@ -124,7 +125,7 @@ function MarketMini() {
       {data.items.slice(0, 4).map((it) => (
         <li key={it.name} className="text-sm flex items-center justify-between">
           <span className="text-gray-700">{it.name} <span className="text-xs text-gray-500">/ {it.unit}</span></span>
-          <span className="font-medium">৳{it.price}</span>
+          <span className="font-medium">৳{convertToBengaliNumerals(it.price)}</span>
         </li>
       ))}
       <Link href="/market" className="text-xs text-green-700 hover:underline mt-2 inline-block">আরো দেখুন →</Link>

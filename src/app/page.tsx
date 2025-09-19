@@ -4,6 +4,7 @@ import Hero from "@/app/components/Hero";
 import VoiceFab from "@/app/components/VoiceFab";
 import AboutStrip from "./components/AboutStrip";
 import Link from "next/link";
+import { convertToBengaliNumerals } from "@/app/utils/convertToBengali";
 
 export default function HomePage() {
   return (
@@ -22,9 +23,9 @@ export default function HomePage() {
         {/* What we do */}
         <section className="mt-10 grid gap-6 md:grid-cols-3">
           {[
-            { title: "Abhawa & Advisory", desc: "আজ/আগামীকালের আবহাওয়া শুনুন ও করণীয় জানুন।", icon: "🌦️" },
-            { title: "Bazardor & Analysis", desc: "সবজি, ধান, ডিম-মাংসের দর—জেলাভিত্তিক তথ্য।", icon: "💰" },
-            { title: "Shikhun (Audio)", desc: "ফসলের রোগ প্রতিকার, সেচ, সার—সহজ অডিও গাইড।", icon: "🎧" },
+            { title: "আবহাওয়া ও পরামর্শ", desc: "আজ ও আগামীকালের পূর্বাভাস দেখুন; আপনার ফসলের করণীয় জেনে নিন", icon: "🌦️" },
+            { title: "বাজারদর", desc: "সবজি, ধান, ডিম-মাংসের দর—জেলাভিত্তিক তথ্য।", icon: "💰" },
+            { title: "ভিডিও দিয়ে শেখা", desc: "রোগ-পোকা দমন, সেচ-সার, জাত নির্বাচন—সবকিছু বাংলা ভিডিও গাইডে", icon: "🎥" },
           ].map((c) => (
             <div key={c.title} className="rounded-2xl border p-5 bg-white">
               <div className="text-3xl">{c.icon}</div>
@@ -55,7 +56,7 @@ export default function HomePage() {
           {[
             { title: "ডিজিটাল অন্তর্ভুক্তি", text: "নিরক্ষর/কম-সাক্ষর কৃষকের জন্য ভয়েস-ফার্স্ট সেবা।" },
             { title: "স্মার্ট কৃষিকাজ", text: "আবহাওয়া-ভিত্তিক পরামর্শ ও খরচ বাঁচানো।" },
-            { title: "কৃষক স্বনির্ভরতা", text: "পিয়ার-টু-পিয়ার বাজারে মধ্যস্বত্বভোগীর ভূমিকা কমানো।" },
+            { title: "কৃষক স্বনির্ভরতা", text: "বাজারে মধ্যস্বত্বভোগীর ভূমিকা কমানো।" },
           ].map((g) => (
             <div key={g.title} className="rounded-2xl border p-5 bg-white">
               <div className="font-semibold">{g.title}</div>
@@ -75,7 +76,7 @@ function Ticker({ name, price, trend }: { name: string; price: string; trend: st
     <div className="rounded-xl bg-white border p-4 flex items-center justify-between">
       <div>
         <div className="text-sm text-gray-600">{name}</div>
-        <div className="font-semibold">{price}</div>
+        <div className="font-semibold">{convertToBengaliNumerals(price)}</div>
       </div>
       <div className="text-xs text-gray-600">{trend}</div>
     </div>

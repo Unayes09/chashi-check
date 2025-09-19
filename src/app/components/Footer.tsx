@@ -19,8 +19,7 @@ export default function Footer() {
         <div>
           <div className="font-semibold">Contact</div>
           <p className="text-sm text-gray-600 mt-2">
-            হেল্পলাইন: ০১২৩৪৫৬৭৮৯<br />
-            ইমেইল: hello@chashibondhu.example
+            ইমেইল: chashibondhu@gmail.com
           </p>
         </div>
       </div>

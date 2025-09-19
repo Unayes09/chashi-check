@@ -8,8 +8,9 @@ import { LS_KEYS } from "../utils/api";
 const navItems = [
   { href: "/", label: "হোম" },
   { href: "/market", label: "বাজার" },
-  { href: "/learn", label: "শিক্ষা" },
-  { href: "/community", label: "কমিউনিটি" },
+  { href: "/learn", label: "শিখা" },
+  { href: "/amar-foshol", label: "আমার ফসল" },
+  { href: "/emergency", label: "জরুরি সহায়তা" },
 ];
 
 export default function Navbar() {
@@ -72,9 +73,9 @@ export default function Navbar() {
             <Link
               href="/login"
               className="rounded-full px-4 py-2 text-sm font-medium border hover:bg-gray-50"
-              aria-label="Login"
+              aria-label="লগইন"
             >
-              Login
+              লগইন
             </Link>
           )}
           <button

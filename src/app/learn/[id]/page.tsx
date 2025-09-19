@@ -13,8 +13,8 @@ import {
   type CropPlan,
 } from "@/app/utils/api";
 
-export default function CropDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function CropDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const [id, setId] = useState<string | null>(null);
   const [plan, setPlan] = useState<CropPlan | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [aiMsg, setAiMsg] = useState<string | null>(null);
@@ -24,7 +24,18 @@ export default function CropDetailPage({ params }: { params: { id: string } }) {
   const [speakingText, setSpeakingText] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  // Resolve params promise (Next.js 15)
   useEffect(() => {
+    const resolveParams = async () => {
+      const resolvedParams = await params;
+      setId(resolvedParams.id);
+    };
+    resolveParams();
+  }, [params]);
+
+  useEffect(() => {
+    if (!id) return;
+    
     const loadCropPlan = async () => {
       try {
           setErr(null);
@@ -60,6 +71,7 @@ export default function CropDetailPage({ params }: { params: { id: string } }) {
   }, []);
 
   async function toggle(itemId: string, done: boolean) {
+    if (!id) return;
     setBusy(true);
     try {
     await markTimelineItem(id, itemId, done);

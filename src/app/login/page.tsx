@@ -183,7 +183,7 @@ export default function LoginPage() {
     <>
       <Navbar />
       <main className={`mx-auto max-w-7xl px-4 py-10 ${showRegister ? "pointer-events-none blur-[1px]" : ""}`}>
-        <h1 className="text-2xl font-semibold">Login (Phone OTP)</h1>
+        <h1 className="text-2xl font-semibold">লগইন (ফোন OTP)</h1>
         <p className="text-gray-600 mt-2">
           ঐচ্ছিক — ফোন নম্বর দিয়ে লগইন করলে আপনার ডেটা সব সংরক্ষিত থাকবে।
         </p>
