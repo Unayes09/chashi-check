@@ -94,12 +94,12 @@ export default function Hero() {
 // ডামি বাজার ডেটা
 const dummyData = {
   items: [
-    { name: "পটল", unit: "কেজি", price: convertToBengaliNumerals(48) },
-    { name: "বেগুন", unit: "কেজি", price: convertToBengaliNumerals(60) },
-    { name: "চাল (মাঝারি)", unit: "কেজি", price: convertToBengaliNumerals(56) },
-    { name: "ব্রয়লার মুরগি", unit: "কেজি", price: convertToBengaliNumerals(180) },
-    { name: "টমেটো", unit: "কেজি", price: convertToBengaliNumerals(85) },
-    { name: "কাঁচা মরিচ", unit: "কেজি", price: convertToBengaliNumerals(120) }
+    { name: "পটল", unit: "কেজি", price: 48 },
+    { name: "বেগুন", unit: "কেজি", price: 60 },
+    { name: "চাল (মাঝারি)", unit: "কেজি", price: 56 },
+    { name: "ব্রয়লার মুরগি", unit: "কেজি", price: 180 },
+    { name: "টমেটো", unit: "কেজি", price: 85 },
+    { name: "কাঁচা মরিচ", unit: "কেজি", price: 120 }
   ]
 };
 
